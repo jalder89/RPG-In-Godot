@@ -12,7 +12,7 @@
 
 [sub_resource type="Animation" id="Animation_exeku"]
 resource_name = "Pan"
-length = 2.0
+length = 1.75
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -20,7 +20,7 @@ tracks/0/path = NodePath("Camera2D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.5, 2),
+"times": PackedFloat32Array(0, 1.25, 1.75),
 "transitions": PackedFloat32Array(0.5, 1, 1),
 "update": 0,
 "values": [Vector2(-160, 90), Vector2(160, 90), Vector2(160, 90)]
@@ -53,6 +53,8 @@ script = ExtResource("1_c5abb")
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="SkyLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.1, 1)
+motion_offset = Vector2(2.08165e-12, 2.08165e-12)
 motion_mirroring = Vector2(320, 2.08165e-12)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/SkyLayer"]
@@ -60,6 +62,8 @@ texture = ExtResource("2_jpix3")
 centered = false
 
 [node name="MountainsLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.2, 1)
+motion_offset = Vector2(200, 2.08165e-12)
 motion_mirroring = Vector2(400, 2.08165e-12)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/MountainsLayer"]
@@ -67,6 +71,8 @@ texture = ExtResource("3_xy6qi")
 centered = false
 
 [node name="FarTreesLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.4, 1)
+motion_offset = Vector2(-80, 2.08165e-12)
 motion_mirroring = Vector2(500, 2.08165e-12)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/FarTreesLayer"]
@@ -74,6 +80,8 @@ texture = ExtResource("4_sdhdx")
 centered = false
 
 [node name="TreeLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.6, 1)
+motion_offset = Vector2(-135, 2.08165e-12)
 motion_mirroring = Vector2(480, 2.08165e-12)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/TreeLayer"]
@@ -84,12 +92,15 @@ centered = false
 motion_mirroring = Vector2(420, 2.08165e-12)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/GrassLayer"]
+position = Vector2(-50, 2.08165e-12)
 texture = ExtResource("6_67o3r")
 centered = false
 
 [node name="ParallaxForeground" type="ParallaxBackground" parent="."]
+layer = 10
 
 [node name="GrassCloseLayer" type="ParallaxLayer" parent="ParallaxForeground"]
+motion_scale = Vector2(1.2, 1)
 motion_mirroring = Vector2(320, 2.08165e-12)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxForeground/GrassCloseLayer"]
@@ -97,6 +108,8 @@ texture = ExtResource("7_0h813")
 centered = false
 
 [node name="GrassForegroundLayer" type="ParallaxLayer" parent="ParallaxForeground"]
+motion_scale = Vector2(1.4, 1)
+motion_offset = Vector2(-20, 2.08165e-12)
 motion_mirroring = Vector2(320, 2.08165e-12)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxForeground/GrassForegroundLayer"]
@@ -104,11 +117,10 @@ texture = ExtResource("8_ucmv5")
 centered = false
 
 [node name="TreeForegroundLayer" type="ParallaxLayer" parent="ParallaxForeground"]
-visible = false
-motion_offset = Vector2(2.08165e-12, 2.08165e-12)
-motion_mirroring = Vector2(2.08165e-12, 2.08165e-12)
+motion_scale = Vector2(1.4, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxForeground/TreeForegroundLayer"]
+position = Vector2(-360, 2.08165e-12)
 texture = ExtResource("9_hu114")
 centered = false
 
