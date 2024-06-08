@@ -1,21 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://c6t7hdyuq5jpa"]
+[gd_scene load_steps=4 format=3 uid="uid://c6t7hdyuq5jpa"]
 
 [ext_resource type="PackedScene" uid="uid://c5p0lh00avc8a" path="res://Scenes/Characters/OverworldPlayer.tscn" id="1_xdb7j"]
-[ext_resource type="Texture2D" uid="uid://l4h7xq273im" path="res://Assets/Sprites/GrassBase.png" id="2_h7c0p"]
+[ext_resource type="PackedScene" uid="uid://b7wrdy0qlekss" path="res://Scenes/Prefabs/grass_background.tscn" id="2_yrxag"]
+[ext_resource type="PackedScene" uid="uid://byueh367xm80v" path="res://Scenes/Prefabs/dirt_tiles.tscn" id="3_e38oi"]
 
 [node name="Town" type="Node2D"]
+y_sort_enabled = true
 
 [node name="OverworldPlayer" parent="." instance=ExtResource("1_xdb7j")]
 position = Vector2(159, 86)
 
-[node name="GrassBackground" type="ParallaxBackground" parent="."]
+[node name="GrassBackground" parent="." instance=ExtResource("2_yrxag")]
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="GrassBackground"]
-motion_mirroring = Vector2(320, 192)
-
-[node name="TextureRect" type="TextureRect" parent="GrassBackground/ParallaxLayer"]
-custom_minimum_size = Vector2(320, 192)
-offset_right = 321.0
-offset_bottom = 181.0
-texture = ExtResource("2_h7c0p")
-stretch_mode = 1
+[node name="DirtTiles" parent="." instance=ExtResource("3_e38oi")]
+layer_0/tile_data = PackedInt32Array(-2, 65536, 0, -1, 589824, 1, -65536, 65536, 2, -65535, 65536, 2, -65534, 65536, 2, -65533, 65536, 2, -65532, 65536, 2, -65531, 327680, 3, -65530, 65536, 3, -65529, 65536, 3, -65528, 65536, 3, -65527, 131072, 3, -131072, 393216, 2, -65537, 0, 0, -131071, 65536, 1, -131070, 65536, 1, -131069, 327680, 2, -131068, 65536, 0, -131067, 131072, 0, -196605, 131072, 0, -196606, 65536, 0, -196607, 65536, 0, -196608, 0, 0, 65534, 65536, 1, 131070, 65536, 2, 65535, 131072, 1, 131071, 131072, 2, 131069, 0, 2, 65533, 0, 1, -3, 262144, 2, -65539, 458752, 0, -65540, 262144, 3, -131076, 458752, 0, -131077, 65536, 3, -131078, 65536, 3, -131079, 0, 3, 458759, 196608, 0, 524295, 262144, 3, 524296, 458752, 0, 589832, 262144, 3, 589833, 65536, 3, 589834, 65536, 3, 589835, 65536, 3, 589836, 393216, 0, 589837, 393216, 2, 524302, 65536, 0, 524303, 393216, 2, 458767, 0, 0, 458768, 131072, 0, 524301, 0, 0, 589838, 65536, 1, 655374, 327680, 1, 655373, 393216, 1, 720909, 0, 2, 720910, 458752, 1, 786446, 196608, 1, 851982, 262144, 3, 851983, 131072, 3, 524304, 327680, 2, 524305, 65536, 0, 524306, 65536, 0, 524307, 131072, 0, 589840, 65536, 1, 655376, 65536, 2, 655377, 65536, 2, 655378, 65536, 2, 655379, 131072, 2, 589843, 327680, 4, 589842, 65536, 1, 589841, 65536, 1, 589839, 65536, 1, 655375, 65536, 2, 655372, 0, 2, 589844, 131072, 3)
