@@ -1,8 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://c6t7hdyuq5jpa"]
+[gd_scene load_steps=3 format=3 uid="uid://c6t7hdyuq5jpa"]
 
 [ext_resource type="PackedScene" uid="uid://c5p0lh00avc8a" path="res://Scenes/Characters/OverworldPlayer.tscn" id="1_xdb7j"]
+[ext_resource type="Texture2D" uid="uid://l4h7xq273im" path="res://Assets/Sprites/GrassBase.png" id="2_h7c0p"]
 
 [node name="Town" type="Node2D"]
 
 [node name="OverworldPlayer" parent="." instance=ExtResource("1_xdb7j")]
 position = Vector2(159, 86)
+
+[node name="GrassBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="GrassBackground"]
+
+[node name="TextureRect" type="TextureRect" parent="GrassBackground/ParallaxLayer"]
+offset_right = 321.0
+offset_bottom = 181.0
+texture = ExtResource("2_h7c0p")
+stretch_mode = 1
