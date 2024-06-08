@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dcqvehypg1sab"]
+[gd_scene load_steps=13 format=3 uid="uid://dcqvehypg1sab"]
 
 [ext_resource type="Script" path="res://Scenes/Battle/battle.gd" id="1_c5abb"]
 [ext_resource type="Texture2D" uid="uid://dcfdm28rfgkg4" path="res://Assets/Sprites/Sky.png" id="2_jpix3"]
@@ -9,6 +9,43 @@
 [ext_resource type="Texture2D" uid="uid://dxbp0smygbcv" path="res://Assets/Sprites/BattleGrassFront.png" id="7_0h813"]
 [ext_resource type="Texture2D" uid="uid://v5rnsobtyf8w" path="res://Assets/Sprites/BattleGrassForeground.png" id="8_ucmv5"]
 [ext_resource type="Texture2D" uid="uid://cwnnes0tbn8sb" path="res://Assets/Sprites/BattleTreesForeground.png" id="9_hu114"]
+
+[sub_resource type="Animation" id="Animation_exeku"]
+resource_name = "Pan"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 2),
+"transitions": PackedFloat32Array(0.5, 1, 1),
+"update": 0,
+"values": [Vector2(-160, 90), Vector2(160, 90), Vector2(160, 90)]
+}
+
+[sub_resource type="Animation" id="Animation_w43e0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-160, 90)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jqdop"]
+_data = {
+"Pan": SubResource("Animation_exeku"),
+"RESET": SubResource("Animation_w43e0")
+}
 
 [node name="Battle" type="Node2D"]
 script = ExtResource("1_c5abb")
@@ -23,7 +60,7 @@ texture = ExtResource("2_jpix3")
 centered = false
 
 [node name="MountainsLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2(320, 2.08165e-12)
+motion_mirroring = Vector2(400, 2.08165e-12)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/MountainsLayer"]
 texture = ExtResource("3_xy6qi")
@@ -74,3 +111,12 @@ motion_mirroring = Vector2(2.08165e-12, 2.08165e-12)
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxForeground/TreeForegroundLayer"]
 texture = ExtResource("9_hu114")
 centered = false
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-160, 90)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jqdop")
+}
+autoplay = "Pan"
