@@ -200,3 +200,5 @@ autoplay = "IdleDown"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_m2rbh")
+
+[node name="Camera2D" type="Camera2D" parent="."]

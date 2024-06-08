@@ -11,8 +11,10 @@ position = Vector2(159, 86)
 [node name="GrassBackground" type="ParallaxBackground" parent="."]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="GrassBackground"]
+motion_mirroring = Vector2(320, 192)
 
 [node name="TextureRect" type="TextureRect" parent="GrassBackground/ParallaxLayer"]
+custom_minimum_size = Vector2(320, 192)
 offset_right = 321.0
 offset_bottom = 181.0
 texture = ExtResource("2_h7c0p")
