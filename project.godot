@@ -15,6 +15,10 @@ run/main_scene="res://Scenes/Levels/Town.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+SceneStack="*res://Scripts/SceneStack.gd"
+
 [display]
 
 window/size/viewport_width=320

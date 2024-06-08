@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+
 const WALK_SPEED = 80
 
 @onready var animated_sprite_2d = $AnimatedSprite2D
@@ -13,6 +14,10 @@ func _physics_process(delta : float) -> void:
 		animate_walk()
 	else:
 		animate_idle()
+
+func _unhandled_input(event : InputEvent) -> void:
+	if event.is_action_pressed("ui_accept"):
+		SceneStack.push("res://Scenes/Battle/battle.tscn")
 
 func is_moving() -> bool:
 	return velocity != Vector2.ZERO
