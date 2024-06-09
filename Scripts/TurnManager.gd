@@ -22,18 +22,15 @@ var turn := ALLY_TURN:
 			STARTUP_TURN:
 				turn_count = 0
 				startup_turn_started.emit()
-				print("Turn Count: " + str(turn_count))
-				turn_count += 1
-				startup_turn_ended.emit()
+				#turn_count += 1
+				#startup_turn_ended.emit()
 			ALLY_TURN:
 				if (turn_count > 1): 
 					enemy_turn_ended.emit()
-				print("Turn Count: " + str(turn_count))
 				ally_turn_started.emit()
 			ENEMY_TURN:
 				if (turn_count > 1):
 					ally_turn_ended.emit()
-				print("Turn Count: " + str(turn_count))
 				enemy_turn_started.emit()
 
 func start():
@@ -41,10 +38,11 @@ func start():
 
 func advance_turn():
 	turn_count += 1
-	self.turn = int(self.turn + 1) & 1
-
-func force_ally_turn():
-	self.turn = ALLY_TURN
-
-func force_enemy_turn():
-	self.turn = ENEMY_TURN
+	if turn_count == 1:
+		match randi_range(1, 2):
+			1: 
+				self.turn = ALLY_TURN
+			2:
+				self.turn = ENEMY_TURN
+	else:
+		self.turn = int(self.turn + 1) & 1

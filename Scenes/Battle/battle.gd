@@ -11,6 +11,7 @@ var turnManager : TurnManager = ReferenceStash.turnManager
 
 # Variables
 var startup : bool = true
+var asyncTurnPool : AsyncTurnPool = ReferenceStash.asyncTurnPool
 
 func _ready() -> void:
 	await animation_player.animation_finished
@@ -21,6 +22,7 @@ func _ready() -> void:
 	turnManager.startup_turn_started.connect(_on_startup_turn_started)
 	turnManager.startup_turn_ended.connect(_on_startup_turn_ended)
 	turnManager.start()
+	asyncTurnPool.turn_over.connect(_on_async_turn_pool_turn_over)
 
 func _unhandled_input(event : InputEvent) -> void:
 	if event.is_action_pressed("ui_accept"):
@@ -28,27 +30,29 @@ func _unhandled_input(event : InputEvent) -> void:
 
 func _on_startup_turn_started() -> void:
 	print("Startup started")
+	asyncTurnPool.add(self)
+	timer.start(2)
+	await timer.timeout
+	asyncTurnPool.remove(self)
 
 func _on_startup_turn_ended() -> void:
 	print("Startup ended")
-	match randi_range(1, 2):
-		1: 
-			turnManager.force_ally_turn()
-		2:
-			turnManager.force_enemy_turn()
+	turnManager.advance_turn()
 
 func _on_ally_turn_started() -> void:
-	print("Ally turn started!")
-	await player_battle_unit.melee_attack(enemy_battle_unit)
-	turnManager.advance_turn()
+	player_battle_unit.melee_attack(enemy_battle_unit)
 
 func _on_ally_turn_ended() -> void:
 	print("Ally turn ended!")
 
 func _on_enemy_turn_started() -> void:
-	print("Enemy turn started!")
-	await enemy_battle_unit.melee_attack(player_battle_unit)
-	turnManager.advance_turn()
+	enemy_battle_unit.melee_attack(player_battle_unit)
 
 func _on_enemy_turn_ended() -> void:
 	print("Enemy turn ended!")
+
+func _on_async_turn_pool_turn_over() -> void:
+	if turnManager.turn_count == 0:
+		_on_startup_turn_ended()
+	else:
+		turnManager.advance_turn()
