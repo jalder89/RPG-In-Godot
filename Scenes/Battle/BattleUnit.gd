@@ -9,6 +9,7 @@ class_name BattleUnit
 const ATTACK_OFFSET = 48
 const KNOCKBACK_AMOUNT = 24
 var battle_animations : BattleAnimations
+var asyncTurnPool : AsyncTurnPool = ReferenceStash.asyncTurnPool
 
 func _ready() -> void:
 	if battle_animations_scene is PackedScene:
@@ -16,6 +17,7 @@ func _ready() -> void:
 		add_child(battle_animations)
 
 func melee_attack(target : BattleUnit):
+	asyncTurnPool.add(self)
 	z_index = 10
 	
 	battle_animations.play("Approach")
@@ -38,8 +40,10 @@ func melee_attack(target : BattleUnit):
 	
 	battle_animations.play("Idle")
 	z_index = 0
+	asyncTurnPool.remove(self)
 
 func take_hit(attacker : BattleUnit) -> void:
+	asyncTurnPool.add(self)
 	var knockback_position := global_position.move_toward(attacker.global_position, -KNOCKBACK_AMOUNT)
 	interpolate_position(global_position, knockback_position, 0.2, Tween.TRANS_CIRC, Tween.EASE_OUT)
 	
@@ -47,6 +51,7 @@ func take_hit(attacker : BattleUnit) -> void:
 	await battle_animations.animation_finished
 	
 	interpolate_position(global_position, root_position, 0.2, Tween.TRANS_CIRC)
+	asyncTurnPool.remove(self)
 
 func interpolate_position(start : Vector2, end : Vector2, duration : float, transition_type : int = Tween.TRANS_LINEAR, easing_type : int = Tween.EASE_IN_OUT) -> void:
 	var tween = create_tween().set_trans(transition_type).set_ease(easing_type)
