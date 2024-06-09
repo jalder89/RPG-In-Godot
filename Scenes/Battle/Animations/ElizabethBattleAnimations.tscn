@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b5ct6bqya7ker"]
+[gd_scene load_steps=11 format=3 uid="uid://b5ct6bqya7ker"]
 
 [ext_resource type="Texture2D" uid="uid://npy3pdhbtkce" path="res://Assets/Sprites/ElizabethBattle.png" id="1_6eq8o"]
 [ext_resource type="Script" path="res://Scenes/Battle/Animations/BattleAnimations.gd" id="2_u5lby"]
@@ -22,7 +22,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_6k0me"]
 resource_name = "Idle"
-length = 0.6
+length = 0.8
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -31,7 +31,7 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3]
@@ -79,6 +79,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [Vector2i(4, 0)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_0lucf"]
 resource_name = "Return"
@@ -96,9 +108,38 @@ tracks/0/keys = {
 "values": [Vector2i(14, 0), Vector2i(15, 0), Vector2i(16, 0), Vector2i(17, 0), Vector2i(18, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_2as85"]
+resource_name = "Hit"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [34, 33, 35]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(2, 1.8, 1, 1), Color(2, 1.8, 1, 1), Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mcobj"]
 _data = {
 "Approach": SubResource("Animation_nyapb"),
+"Hit": SubResource("Animation_2as85"),
 "Idle": SubResource("Animation_6k0me"),
 "Melee": SubResource("Animation_77lq5"),
 "RESET": SubResource("Animation_h3uc4"),
@@ -117,6 +158,7 @@ libraries = {
 "": SubResource("AnimationLibrary_mcobj")
 }
 autoplay = "Idle"
+speed_scale = 1.2
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 1)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://detfye0ukd8b"]
+[gd_scene load_steps=10 format=3 uid="uid://detfye0ukd8b"]
 
 [ext_resource type="Texture2D" uid="uid://e8cda747bdjj" path="res://Assets/Sprites/WerewolfBattle.png" id="1_xxjc1"]
 [ext_resource type="Script" path="res://Scenes/Battle/Animations/BattleAnimations.gd" id="2_qaxnm"]
@@ -38,7 +38,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_fmd2y"]
 resource_name = "Melee"
-length = 0.4
+length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -46,10 +46,10 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [15, 16, 17, 18]
+"values": [15, 16, 17]
 }
 
 [sub_resource type="Animation" id="Animation_tefd1"]
@@ -66,10 +66,22 @@ tracks/0/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_bo0wa"]
 resource_name = "Return"
-length = 0.2
+length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -77,15 +89,44 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
+"times": PackedFloat32Array(0, 0.1, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [18, 19, 20]
+}
+
+[sub_resource type="Animation" id="Animation_ep0vj"]
+resource_name = "Hit"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [19, 20]
+"values": [21, 22]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(2, 1.8, 1, 1), Color(2, 1.8, 1, 1), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_iiqq6"]
 _data = {
 "Approach": SubResource("Animation_tno1a"),
+"Hit": SubResource("Animation_ep0vj"),
 "Idle": SubResource("Animation_3rgrq"),
 "Melee": SubResource("Animation_fmd2y"),
 "RESET": SubResource("Animation_tefd1"),
