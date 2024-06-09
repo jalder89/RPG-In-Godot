@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://c6t7hdyuq5jpa"]
 
 [ext_resource type="PackedScene" uid="uid://c5p0lh00avc8a" path="res://Scenes/Characters/OverworldPlayer.tscn" id="1_xdb7j"]
-[ext_resource type="PackedScene" uid="uid://b7wrdy0qlekss" path="res://Scenes/Prefabs/grass_background.tscn" id="2_yrxag"]
-[ext_resource type="PackedScene" uid="uid://byueh367xm80v" path="res://Scenes/Prefabs/dirt_tiles.tscn" id="3_e38oi"]
+[ext_resource type="PackedScene" uid="uid://b7wrdy0qlekss" path="res://Scenes/Prefabs/GrassBackground.tscn" id="2_yrxag"]
+[ext_resource type="PackedScene" uid="uid://byueh367xm80v" path="res://Scenes/Prefabs/DirtTiles.tscn" id="3_e38oi"]
 
 [node name="Town" type="Node2D"]
 y_sort_enabled = true
