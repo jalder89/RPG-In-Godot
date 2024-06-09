@@ -31,8 +31,7 @@ func _unhandled_input(event : InputEvent) -> void:
 func _on_startup_turn_started() -> void:
 	print("Startup started")
 	asyncTurnPool.add(self)
-	timer.start(2)
-	await timer.timeout
+	# Battle Startup Tasks Go Here
 	asyncTurnPool.remove(self)
 
 func _on_startup_turn_ended() -> void:

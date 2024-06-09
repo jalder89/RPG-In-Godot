@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ClassStats" load_steps=2 format=3 uid="uid://dr8nakvnobnqc"]
+
+[ext_resource type="Script" path="res://Scripts/CharacterClasses/ClassStats.gd" id="1_00urp"]
+
+[resource]
+script = ExtResource("1_00urp")
+name = "Werewolf"
+max_health = 15
+attack = 12
+defense = 10
+speed = 0
