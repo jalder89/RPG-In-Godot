@@ -1,6 +1,23 @@
-[gd_scene load_steps=8 format=3 uid="uid://detfye0ukd8b"]
+[gd_scene load_steps=9 format=3 uid="uid://detfye0ukd8b"]
 
 [ext_resource type="Texture2D" uid="uid://e8cda747bdjj" path="res://Assets/Sprites/WerewolfBattle.png" id="1_xxjc1"]
+[ext_resource type="Script" path="res://Scenes/Battle/Animations/BattleAnimations.gd" id="2_qaxnm"]
+
+[sub_resource type="Animation" id="Animation_tno1a"]
+resource_name = "Approach"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 11, 12, 13, 14]
+}
 
 [sub_resource type="Animation" id="Animation_3rgrq"]
 resource_name = "Idle"
@@ -19,37 +36,6 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7]
 }
 
-[sub_resource type="Animation" id="Animation_tefd1"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_tno1a"]
-resource_name = "Approach"
-length = 0.7
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [8, 9, 10, 11, 12, 13, 14]
-}
-
 [sub_resource type="Animation" id="Animation_fmd2y"]
 resource_name = "Melee"
 length = 0.4
@@ -64,6 +50,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [15, 16, 17, 18]
+}
+
+[sub_resource type="Animation" id="Animation_tefd1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_bo0wa"]
@@ -96,6 +97,7 @@ position = Vector2(5, -58)
 texture = ExtResource("1_xxjc1")
 offset = Vector2(2.08165e-12, -0.5)
 hframes = 23
+script = ExtResource("2_qaxnm")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
