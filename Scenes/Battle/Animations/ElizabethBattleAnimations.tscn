@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://b5ct6bqya7ker"]
+[gd_scene load_steps=10 format=3 uid="uid://b5ct6bqya7ker"]
 
 [ext_resource type="Texture2D" uid="uid://npy3pdhbtkce" path="res://Assets/Sprites/ElizabethBattle.png" id="1_6eq8o"]
 [ext_resource type="Script" path="res://Scenes/Battle/Animations/BattleAnimations.gd" id="2_u5lby"]
+[ext_resource type="Texture2D" uid="uid://oburg2xkr4g1" path="res://Assets/Sprites/ElizabethShadow.png" id="3_1d345"]
 
 [sub_resource type="Animation" id="Animation_nyapb"]
 resource_name = "Approach"
@@ -116,3 +117,9 @@ libraries = {
 "": SubResource("AnimationLibrary_mcobj")
 }
 autoplay = "Idle"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+show_behind_parent = true
+position = Vector2(-24, 52)
+texture = ExtResource("3_1d345")
