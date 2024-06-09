@@ -39,7 +39,7 @@ func _on_startup_turn_ended() -> void:
 
 func _on_ally_turn_started() -> void:
 	print("Ally turn started!")
-	await player_battle_unit.melee_attack()
+	await player_battle_unit.melee_attack(enemy_battle_unit)
 	turnManager.advance_turn()
 
 func _on_ally_turn_ended() -> void:
