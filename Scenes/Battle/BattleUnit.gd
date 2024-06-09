@@ -12,4 +12,15 @@ func _ready() -> void:
 		add_child(battle_animations)
 
 func melee_attack():
+	battle_animations.play("Approach")
+	await battle_animations.animation_finished
+	
 	print("Attack!")
+	
+	battle_animations.play("Melee")
+	await battle_animations.animation_finished
+	
+	battle_animations.play("Return")
+	await battle_animations.animation_finished
+	
+	battle_animations.play("Idle")
