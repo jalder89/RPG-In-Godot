@@ -17,9 +17,6 @@ const KNOCKBACK_AMOUNT = 24
 var battle_animations : BattleAnimations
 var asyncTurnPool : AsyncTurnPool = ReferenceStash.asyncTurnPool
 
-func _exit_tree() -> void:
-	asyncTurnPool.remove(self)
-
 func melee_attack(target : BattleUnit):
 	asyncTurnPool.add(self)
 	z_index = 10
@@ -61,6 +58,7 @@ func take_hit(attacker : BattleUnit) -> void:
 	if stats.health == 0:
 		battle_animations.play("Death")
 		await battle_animations.animation_finished
+		asyncTurnPool.remove(self)
 		queue_free() 
 		return
 	else:
