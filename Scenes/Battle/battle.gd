@@ -36,6 +36,15 @@ func _unhandled_input(event : InputEvent) -> void:
 	if event.is_action_pressed("ui_accept"):
 		SceneStack.pop()
 
+func battle_won() -> void:
+	timer.start(0.5)
+	await timer.timeout
+	var previous_level := player_battle_unit.stats.level
+	player_battle_unit.stats.experience += 105
+	if player_battle_unit.stats.level > previous_level:
+		print("Level Up!")
+	pass
+
 func exit_battle() -> void:
 	timer.start(1)
 	await timer.timeout
@@ -66,6 +75,7 @@ func _on_ally_turn_ended() -> void:
 
 func _on_enemy_turn_started() -> void:
 	if not is_instance_valid(enemy_battle_unit) or enemy_battle_unit.is_queued_for_deletion():
+		await battle_won()
 		exit_battle()
 		return
 	enemy_battle_unit.melee_attack(player_battle_unit)

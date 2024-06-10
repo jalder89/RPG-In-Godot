@@ -9,3 +9,4 @@ var experience := 0:
 		while experience >= MAX_EXPERIENCE:
 			experience = experience - MAX_EXPERIENCE
 			level += 1
+			emit_signal("level_changed")
