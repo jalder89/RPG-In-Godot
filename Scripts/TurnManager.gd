@@ -22,8 +22,6 @@ var turn := ALLY_TURN:
 			STARTUP_TURN:
 				turn_count = 0
 				startup_turn_started.emit()
-				#turn_count += 1
-				#startup_turn_ended.emit()
 			ALLY_TURN:
 				if (turn_count > 1): 
 					enemy_turn_ended.emit()

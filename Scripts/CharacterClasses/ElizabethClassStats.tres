@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ClassStats" load_steps=3 format=3 uid="uid://by0dupr36tuh"]
+
+[ext_resource type="PackedScene" uid="uid://b5ct6bqya7ker" path="res://Scenes/Battle/Animations/ElizabethBattleAnimations.tscn" id="1_cesym"]
+[ext_resource type="Script" path="res://Scripts/CharacterClasses/ClassStats.gd" id="2_xb5vk"]
+
+[resource]
+script = ExtResource("2_xb5vk")
+name = "Elizabeth"
+max_health = 10
+attack = 10
+defense = 8
+speed = 8
+battle_animations = ExtResource("1_cesym")

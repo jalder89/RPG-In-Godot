@@ -4,6 +4,7 @@ extends Node2D
 var turnManager : TurnManager = ReferenceStash.turnManager
 
 # References
+@onready var startup_battle_unit : BattleUnit
 @onready var player_battle_unit : BattleUnit = $PlayerPosition/PlayerBattleUnit
 @onready var enemy_battle_unit : BattleUnit = $EnemyPosition/EnemyBattleUnit
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
@@ -15,6 +16,11 @@ var asyncTurnPool : AsyncTurnPool = ReferenceStash.asyncTurnPool
 
 func _ready() -> void:
 	await animation_player.animation_finished
+	
+	# AsyncTurnPool setup
+	asyncTurnPool.turn_over.connect(_on_async_turn_pool_turn_over)
+	
+	# Turn manager setup
 	turnManager.ally_turn_started.connect(_on_ally_turn_started)
 	turnManager.ally_turn_ended.connect(_on_ally_turn_ended)
 	turnManager.enemy_turn_started.connect(_on_enemy_turn_started)
@@ -22,21 +28,21 @@ func _ready() -> void:
 	turnManager.startup_turn_started.connect(_on_startup_turn_started)
 	turnManager.startup_turn_ended.connect(_on_startup_turn_ended)
 	turnManager.start()
-	asyncTurnPool.turn_over.connect(_on_async_turn_pool_turn_over)
 
 func _unhandled_input(event : InputEvent) -> void:
 	if event.is_action_pressed("ui_accept"):
 		SceneStack.pop()
 
 func _on_startup_turn_started() -> void:
-	print("Startup started")
-	asyncTurnPool.add(self)
-	timer.start(2)
-	await timer.timeout
-	asyncTurnPool.remove(self)
+	# Clears turn pool in case of battle ending mid-turn
+	asyncTurnPool.active_nodes.clear()
+	asyncTurnPool.add(startup_battle_unit)
+	# Battle Startup Tasks Go Here
+	print("Startup complete")
+	# Signals turn_over, trigger _on_start_turn_ended
+	asyncTurnPool.remove(startup_battle_unit)
 
 func _on_startup_turn_ended() -> void:
-	print("Startup ended")
 	turnManager.advance_turn()
 
 func _on_ally_turn_started() -> void:

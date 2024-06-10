@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ClassStats" load_steps=3 format=3 uid="uid://dr8nakvnobnqc"]
+
+[ext_resource type="Script" path="res://Scripts/CharacterClasses/ClassStats.gd" id="1_00urp"]
+[ext_resource type="PackedScene" uid="uid://detfye0ukd8b" path="res://Scenes/Battle/Animations/WerewolfBattleAnimations.tscn" id="1_sd0kb"]
+
+[resource]
+script = ExtResource("1_00urp")
+name = "Werewolf"
+max_health = 6
+attack = 6
+defense = 7
+speed = 10
+battle_animations = ExtResource("1_sd0kb")
