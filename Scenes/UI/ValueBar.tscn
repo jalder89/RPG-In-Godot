@@ -42,3 +42,5 @@ offset_bottom = 7.0
 value = 50.0
 nine_patch_stretch = true
 texture_progress = ExtResource("4_l8c0q")
+
+[node name="Timer" type="Timer" parent="."]
