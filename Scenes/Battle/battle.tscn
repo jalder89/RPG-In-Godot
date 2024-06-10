@@ -13,7 +13,7 @@
 [ext_resource type="Resource" uid="uid://dr8nakvnobnqc" path="res://Scripts/CharacterClasses/WerewolfClassStats.tres" id="9_6daud"]
 [ext_resource type="Texture2D" uid="uid://cwnnes0tbn8sb" path="res://Assets/Sprites/BattleTreesForeground.png" id="9_hu114"]
 [ext_resource type="PackedScene" uid="uid://tceqhcu367cw" path="res://Scenes/UI/BattleUnitInfo.tscn" id="13_6e1yf"]
-[ext_resource type="PackedScene" uid="uid://e7v0aivcpa3h" path="res://Scenes/UI/EnemyBattleUnitInfo.tscn" id="14_hkgjk"]
+[ext_resource type="PackedScene" uid="uid://ccj1x64otnrfr" path="res://Scenes/UI/LevelUpUI.tscn" id="14_qhamp"]
 
 [sub_resource type="Animation" id="Animation_exeku"]
 resource_name = "Pan"
@@ -249,8 +249,7 @@ offset_top = 4.0
 offset_right = 72.0
 offset_bottom = 16.0
 
-[node name="EnemyBattleInfoOld" parent="BattleUI" instance=ExtResource("13_6e1yf")]
-visible = false
+[node name="EnemyBattleInfo" parent="BattleUI" instance=ExtResource("13_6e1yf")]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -260,12 +259,36 @@ offset_right = -4.0
 offset_bottom = 16.0
 grow_horizontal = 0
 
-[node name="EnemyBattleInfo" parent="BattleUI" instance=ExtResource("14_hkgjk")]
-anchors_preset = 1
-anchor_left = 1.0
+[node name="HealthBar" parent="BattleUI/EnemyBattleInfo" index="0"]
+flip_h = false
+
+[node name="Decrease" parent="BattleUI/EnemyBattleInfo/HealthBar" index="0"]
+fill_mode = 1
+
+[node name="Increase" parent="BattleUI/EnemyBattleInfo/HealthBar" index="1"]
+fill_mode = 1
+
+[node name="Actual" parent="BattleUI/EnemyBattleInfo/HealthBar" index="2"]
+fill_mode = 1
+
+[node name="Shadow" parent="BattleUI/EnemyBattleInfo" index="1"]
+flip_h = true
+
+[node name="LevelLabel" parent="BattleUI/EnemyBattleInfo" index="2"]
+offset_left = 14.0
+offset_right = 66.0
+
+[node name="CenterContainer" type="CenterContainer" parent="BattleUI"]
+anchors_preset = 15
 anchor_right = 1.0
-offset_left = -72.0
-offset_top = 4.0
-offset_right = -4.0
-offset_bottom = 16.0
-grow_horizontal = 0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LevelUpUI" parent="BattleUI/CenterContainer" instance=ExtResource("14_qhamp")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[editable path="BattleUI/EnemyBattleInfo"]
+[editable path="BattleUI/EnemyBattleInfo/HealthBar"]

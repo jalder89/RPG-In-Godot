@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://ccj1x64otnrfr"]
+
+[ext_resource type="Texture2D" uid="uid://ce1co1xe7ibu0" path="res://Assets/Sprites/LevelUpFrame.png" id="1_hbj8n"]
+[ext_resource type="Script" path="res://Scenes/UI/LevelUpUI.gd" id="2_coutj"]
+[ext_resource type="Texture2D" uid="uid://0vnomalpuhl5" path="res://Assets/Sprites/LevelUpUI.png" id="3_r8gah"]
+[ext_resource type="PackedScene" uid="uid://deqx7chr5yvec" path="res://Scenes/UI/ValueBar.tscn" id="4_i7xdm"]
+[ext_resource type="Texture2D" uid="uid://c8fsnl6driu0y" path="res://Assets/Sprites/ExperienceBarFrame.png" id="5_leslu"]
+[ext_resource type="Texture2D" uid="uid://cqs1u2mijf1aj" path="res://Assets/Sprites/ExperienceBarBig.png" id="6_h8fvw"]
+
+[node name="LevelUpUI" type="TextureRect"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_hbj8n")
+script = ExtResource("2_coutj")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="LevelUpTexture" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_r8gah")
+stretch_mode = 3
+
+[node name="ExperienceBar" parent="MarginContainer/VBoxContainer" instance=ExtResource("4_i7xdm")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("5_leslu")
+
+[node name="Decrease" parent="MarginContainer/VBoxContainer/ExperienceBar" index="0"]
+visible = false
+
+[node name="Increase" parent="MarginContainer/VBoxContainer/ExperienceBar" index="1"]
+visible = false
+
+[node name="Actual" parent="MarginContainer/VBoxContainer/ExperienceBar" index="2"]
+offset_left = 4.0
+offset_right = 92.0
+offset_bottom = 11.0
+value = 25.0
+texture_progress = ExtResource("6_h8fvw")
+
+[editable path="MarginContainer/VBoxContainer/ExperienceBar"]

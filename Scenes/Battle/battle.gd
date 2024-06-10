@@ -10,6 +10,7 @@ var turnManager : TurnManager = ReferenceStash.turnManager
 @onready var enemy_battle_unit : BattleUnit = $EnemyPosition/EnemyBattleUnit
 @onready var enemy_battle_info := $BattleUI/EnemyBattleInfo
 @onready var startup_battle_unit : BattleUnit
+@onready var level_up_ui = %LevelUpUI
 @onready var timer = $Timer
 
 # Variables
@@ -43,6 +44,7 @@ func battle_won() -> void:
 	player_battle_unit.stats.experience += 105
 	if player_battle_unit.stats.level > previous_level:
 		print("Level Up!")
+		await level_up_ui.level_up()
 	pass
 
 func exit_battle() -> void:
