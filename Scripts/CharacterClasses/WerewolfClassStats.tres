@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_00urp")
 name = "Werewolf"
-max_health = 6
+max_health = 24
 attack = 6
 defense = 7
 speed = 10

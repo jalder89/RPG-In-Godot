@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("2_xb5vk")
 name = "Elizabeth"
-max_health = 10
+max_health = 30
 attack = 10
 defense = 8
 speed = 8
