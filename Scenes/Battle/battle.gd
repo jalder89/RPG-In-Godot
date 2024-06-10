@@ -51,6 +51,8 @@ func _on_startup_turn_ended() -> void:
 
 func _on_ally_turn_started() -> void:
 	if not is_instance_valid(player_battle_unit) or player_battle_unit.is_queued_for_deletion():
+		timer.start(1)
+		await timer.timeout
 		get_tree().quit()
 		return
 	player_battle_unit.melee_attack(enemy_battle_unit)
