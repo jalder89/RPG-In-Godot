@@ -1,0 +1,8 @@
+[gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://2fg6clohfxik"]
+
+[ext_resource type="FontFile" uid="uid://b7tvdnemtlx8e" path="res://Assets/WestwickFont.ttf" id="1_5j75l"]
+
+[resource]
+base_font = ExtResource("1_5j75l")
+spacing_top = -2
+spacing_bottom = -1

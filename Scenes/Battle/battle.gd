@@ -4,16 +4,21 @@ extends Node2D
 var turnManager : TurnManager = ReferenceStash.turnManager
 
 # References
-@onready var startup_battle_unit : BattleUnit
-@onready var player_battle_unit : BattleUnit = $PlayerPosition/PlayerBattleUnit
-@onready var enemy_battle_unit : BattleUnit = $EnemyPosition/EnemyBattleUnit
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
+@onready var player_battle_unit : BattleUnit = $PlayerPosition/PlayerBattleUnit
+@onready var player_battle_info := $BattleUI/PlayerBattleInfo
+@onready var enemy_battle_unit : BattleUnit = $EnemyPosition/EnemyBattleUnit
+@onready var enemy_battle_info := $BattleUI/EnemyBattleInfo
+@onready var startup_battle_unit : BattleUnit
+@onready var level_up_ui = %LevelUpUI
 @onready var timer = $Timer
 
 # Variables
 var asyncTurnPool : AsyncTurnPool = ReferenceStash.asyncTurnPool
 
 func _ready() -> void:
+	player_battle_info.stats = player_battle_unit.stats
+	enemy_battle_info.stats = enemy_battle_unit.stats
 	await animation_player.animation_finished
 	
 	# AsyncTurnPool setup
@@ -31,6 +36,16 @@ func _ready() -> void:
 func _unhandled_input(event : InputEvent) -> void:
 	if event.is_action_pressed("ui_accept"):
 		SceneStack.pop()
+
+func battle_won() -> void:
+	timer.start(0.5)
+	await timer.timeout
+	var previous_level := player_battle_unit.stats.level
+	player_battle_unit.stats.experience += 105
+	if player_battle_unit.stats.level > previous_level:
+		print("Level Up!")
+		await level_up_ui.level_up()
+	pass
 
 func exit_battle() -> void:
 	timer.start(1)
@@ -62,6 +77,7 @@ func _on_ally_turn_ended() -> void:
 
 func _on_enemy_turn_started() -> void:
 	if not is_instance_valid(enemy_battle_unit) or enemy_battle_unit.is_queued_for_deletion():
+		await battle_won()
 		exit_battle()
 		return
 	enemy_battle_unit.melee_attack(player_battle_unit)

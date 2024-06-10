@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://deqx7chr5yvec"]
+
+[ext_resource type="Texture2D" uid="uid://dj4a17mm4ka72" path="res://Assets/Sprites/HealthBarBorder.png" id="1_qf1pq"]
+[ext_resource type="Script" path="res://Scenes/UI/ValueBar.gd" id="2_6b065"]
+[ext_resource type="Texture2D" uid="uid://bersow5mg8ckp" path="res://Assets/Sprites/HealthBarDamage.png" id="2_ixy0a"]
+[ext_resource type="Texture2D" uid="uid://uj20dx30vsj7" path="res://Assets/Sprites/HealthBarDark.png" id="3_gibhe"]
+[ext_resource type="Texture2D" uid="uid://duqk8s4jq7jqj" path="res://Assets/Sprites/HealthBar.png" id="4_l8c0q"]
+
+[node name="ValueBar" type="TextureRect"]
+offset_right = 68.0
+offset_bottom = 12.0
+texture = ExtResource("1_qf1pq")
+stretch_mode = 2
+script = ExtResource("2_6b065")
+
+[node name="Decrease" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 4.0
+offset_right = 65.0
+offset_bottom = 7.0
+value = 75.0
+nine_patch_stretch = true
+texture_progress = ExtResource("2_ixy0a")
+
+[node name="Increase" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 4.0
+offset_right = 65.0
+offset_bottom = 7.0
+value = 60.0
+nine_patch_stretch = true
+texture_progress = ExtResource("3_gibhe")
+
+[node name="Actual" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 4.0
+offset_right = 65.0
+offset_bottom = 7.0
+value = 50.0
+nine_patch_stretch = true
+texture_progress = ExtResource("4_l8c0q")
+
+[node name="Timer" type="Timer" parent="."]
