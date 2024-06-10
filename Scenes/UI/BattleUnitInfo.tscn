@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://tceqhcu367cw"]
+
+[ext_resource type="Script" path="res://Scenes/UI/BattleUnitInfo.gd" id="1_3yepe"]
+[ext_resource type="PackedScene" uid="uid://deqx7chr5yvec" path="res://Scenes/UI/ValueBar.tscn" id="1_fjjdn"]
+
+[node name="BattleUnitInfo" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 68.0
+offset_bottom = 12.0
+script = ExtResource("1_3yepe")
+
+[node name="HealthBar" parent="." instance=ExtResource("1_fjjdn")]
+layout_mode = 0

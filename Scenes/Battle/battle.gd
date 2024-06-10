@@ -4,16 +4,20 @@ extends Node2D
 var turnManager : TurnManager = ReferenceStash.turnManager
 
 # References
-@onready var startup_battle_unit : BattleUnit
-@onready var player_battle_unit : BattleUnit = $PlayerPosition/PlayerBattleUnit
-@onready var enemy_battle_unit : BattleUnit = $EnemyPosition/EnemyBattleUnit
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
+@onready var player_battle_unit : BattleUnit = $PlayerPosition/PlayerBattleUnit
+@onready var player_battle_info := $BattleUI/PlayerBattleInfo
+@onready var enemy_battle_unit : BattleUnit = $EnemyPosition/EnemyBattleUnit
+@onready var enemy_battle_info := $BattleUI/EnemyBattleInfo
+@onready var startup_battle_unit : BattleUnit
 @onready var timer = $Timer
 
 # Variables
 var asyncTurnPool : AsyncTurnPool = ReferenceStash.asyncTurnPool
 
 func _ready() -> void:
+	player_battle_info.stats = player_battle_unit.stats
+	enemy_battle_info.stats = enemy_battle_unit.stats
 	await animation_player.animation_finished
 	
 	# AsyncTurnPool setup

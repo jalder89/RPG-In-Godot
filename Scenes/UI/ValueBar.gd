@@ -31,7 +31,7 @@ func set_bar(value : float, max_value : float) -> void:
 	increase.value = bar_value
 	actual.value = bar_value
 
-func animate_bar(value : float, max_value : float, duration : float = 1.0) -> void:
+func animate_bar(value : float, max_value : float, duration : float = 2.0) -> void:
 	var previous_bar_value = bar_value
 	set_bar_value(value, max_value)
 	var tween := create_tween().set_trans(Tween.TRANS_CIRC).set_ease(Tween.EASE_OUT)
