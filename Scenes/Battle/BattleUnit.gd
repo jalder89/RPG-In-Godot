@@ -2,7 +2,13 @@ extends Node2D
 class_name BattleUnit
 
 
-@export var battle_animations_scene = PackedScene
+@export var stats : ClassStats:
+	set(value): 
+		stats = value
+		if not stats is ClassStats: return
+		if battle_animations is BattleAnimations: battle_animations.queue_free()
+		battle_animations = stats.battle_animations.instantiate()
+		add_child(battle_animations)
 
 @onready var root_position := global_position
 
@@ -11,10 +17,8 @@ const KNOCKBACK_AMOUNT = 24
 var battle_animations : BattleAnimations
 var asyncTurnPool : AsyncTurnPool = ReferenceStash.asyncTurnPool
 
-func _ready() -> void:
-	if battle_animations_scene is PackedScene:
-		battle_animations = battle_animations_scene.instantiate()
-		add_child(battle_animations)
+func set_stats(value : ClassStats) -> void:
+	pass
 
 func melee_attack(target : BattleUnit):
 	asyncTurnPool.add(self)
