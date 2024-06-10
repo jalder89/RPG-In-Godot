@@ -11,7 +11,6 @@ var turnManager : TurnManager = ReferenceStash.turnManager
 @onready var timer = $Timer
 
 # Variables
-var startup : bool = true
 var asyncTurnPool : AsyncTurnPool = ReferenceStash.asyncTurnPool
 
 func _ready() -> void:
