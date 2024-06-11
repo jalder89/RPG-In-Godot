@@ -30,7 +30,7 @@ window/stretch/mode="canvas_items"
 
 [gui]
 
-theme/default_theme_scale=2.0
+theme/default_theme_scale=2.5
 
 [input]
 

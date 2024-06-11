@@ -10,6 +10,7 @@ var turnManager : TurnManager = ReferenceStash.turnManager
 @onready var enemy_battle_unit : BattleUnit = $EnemyPosition/EnemyBattleUnit
 @onready var enemy_battle_info := $BattleUI/EnemyBattleInfo
 @onready var startup_battle_unit : BattleUnit
+@onready var battle_menu = %BattleMenu
 @onready var level_up_ui = %LevelUpUI
 @onready var timer = $Timer
 
@@ -32,10 +33,6 @@ func _ready() -> void:
 	turnManager.startup_turn_started.connect(_on_startup_turn_started)
 	turnManager.startup_turn_ended.connect(_on_startup_turn_ended)
 	turnManager.start()
-
-func _unhandled_input(event : InputEvent) -> void:
-	if event.is_action_pressed("ui_accept"):
-		SceneStack.pop()
 
 func battle_won() -> void:
 	timer.start(0.5)
@@ -70,7 +67,20 @@ func _on_ally_turn_started() -> void:
 		await timer.timeout
 		get_tree().quit()
 		return
-	player_battle_unit.melee_attack(enemy_battle_unit)
+	battle_menu.show()
+	battle_menu.grab_action_focus()
+	var option : int = await battle_menu.menu_option_selected
+	battle_menu.hide()
+	match option:
+		BattleMenu.ACTION:
+			player_battle_unit.melee_attack(enemy_battle_unit)
+		BattleMenu.ITEM:
+			turnManager.advance_turn()
+			pass
+		BattleMenu.RUN:
+			timer.start(0.1)
+			await timer.timeout
+			SceneStack.pop()
 
 func _on_ally_turn_ended() -> void:
 	print("Ally turn ended!")
