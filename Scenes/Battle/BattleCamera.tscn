@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://duwfqujec3qcp"]
+
+[ext_resource type="Script" path="res://Scenes/Battle/BattleCamera.gd" id="1_neooc"]
+
+[node name="BattleCamera" type="Camera2D"]
+script = ExtResource("1_neooc")
