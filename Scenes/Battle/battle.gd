@@ -67,10 +67,10 @@ func _on_ally_turn_started() -> void:
 		await timer.timeout
 		get_tree().quit()
 		return
-	battle_menu.show()
+	await battle_menu.show_menu()
 	battle_menu.grab_action_focus()
 	var option : int = await battle_menu.menu_option_selected
-	battle_menu.hide()
+	battle_menu.hide_menu()
 	match option:
 		BattleMenu.ACTION:
 			player_battle_unit.melee_attack(enemy_battle_unit)
@@ -78,9 +78,7 @@ func _on_ally_turn_started() -> void:
 			turnManager.advance_turn()
 			pass
 		BattleMenu.RUN:
-			timer.start(0.1)
-			await timer.timeout
-			SceneStack.pop()
+			exit_battle()
 
 func _on_ally_turn_ended() -> void:
 	print("Ally turn ended!")
