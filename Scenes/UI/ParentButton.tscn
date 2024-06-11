@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://f6hg4jfcfh0h"]
+
+[ext_resource type="Theme" uid="uid://c5ws7dk51qn2g" path="res://Scenes/UI/DefaultTheme.tres" id="1_cm1kq"]
+
+[node name="ParentButton" type="Button"]
+offset_right = 60.0
+offset_bottom = 15.0
+theme = ExtResource("1_cm1kq")
