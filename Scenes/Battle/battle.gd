@@ -1,18 +1,29 @@
 extends Node2D
 
+const ZOOM_IN = Vector2(1.2, 1.2)
+const ZOOM_DEFAULT = Vector2.ONE
+
+
 # Managers
 var turnManager : TurnManager = ReferenceStash.turnManager
 
 # References
+@onready var parallax_background = %ParallaxBackground
+@onready var parallax_foreground = %ParallaxForeground
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
 @onready var player_battle_unit : BattleUnit = $PlayerPosition/PlayerBattleUnit
 @onready var player_battle_info := $BattleUI/PlayerBattleInfo
 @onready var enemy_battle_unit : BattleUnit = $EnemyPosition/EnemyBattleUnit
 @onready var enemy_battle_info := $BattleUI/EnemyBattleInfo
 @onready var startup_battle_unit : BattleUnit
+@onready var battle_camera = $BattleCamera
 @onready var battle_menu = %BattleMenu
 @onready var level_up_ui = %LevelUpUI
 @onready var timer = $Timer
+
+@onready var center_position : Vector2 = $CenterRoot/CenterPoint.global_position
+@onready var enemy_camera_position : Vector2 = get_battle_unit_camera_position(enemy_battle_unit)
+@onready var player_camera_position : Vector2 = get_battle_unit_camera_position(player_battle_unit)
 
 # Variables
 var asyncTurnPool : AsyncTurnPool = ReferenceStash.asyncTurnPool
@@ -33,6 +44,12 @@ func _ready() -> void:
 	turnManager.startup_turn_started.connect(_on_startup_turn_started)
 	turnManager.startup_turn_ended.connect(_on_startup_turn_ended)
 	turnManager.start()
+
+func get_battle_unit_camera_position(battle_unit : BattleUnit) -> Vector2:
+	var final_position := Vector2()
+	var start = Vector2(battle_unit.global_position.x, center_position.y)
+	final_position = start.move_toward(center_position, 32)
+	return final_position
 
 func battle_won() -> void:
 	timer.start(0.5)
@@ -73,6 +90,7 @@ func _on_ally_turn_started() -> void:
 	battle_menu.hide_menu()
 	match option:
 		BattleMenu.ACTION:
+			battle_camera.focus_target(enemy_camera_position, ZOOM_IN, parallax_background, parallax_foreground)
 			player_battle_unit.melee_attack(enemy_battle_unit)
 		BattleMenu.ITEM:
 			turnManager.advance_turn()
@@ -88,6 +106,7 @@ func _on_enemy_turn_started() -> void:
 		await battle_won()
 		exit_battle()
 		return
+	battle_camera.focus_target(player_camera_position, ZOOM_IN, parallax_background, parallax_foreground)
 	enemy_battle_unit.melee_attack(player_battle_unit)
 
 func _on_enemy_turn_ended() -> void:
@@ -97,4 +116,5 @@ func _on_async_turn_pool_turn_over() -> void:
 	if turnManager.turn_count == 0:
 		_on_startup_turn_ended()
 	else:
+		await battle_camera.center_target(center_position, ZOOM_DEFAULT, parallax_background, parallax_foreground)
 		turnManager.advance_turn()
