@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://c5p0lh00avc8a" path="res://Scenes/Characters/OverworldPlayer.tscn" id="1_xdb7j"]
 [ext_resource type="PackedScene" uid="uid://b7wrdy0qlekss" path="res://Scenes/Prefabs/GrassBackground.tscn" id="2_yrxag"]
 [ext_resource type="PackedScene" uid="uid://byueh367xm80v" path="res://Scenes/Prefabs/DirtTiles.tscn" id="3_e38oi"]
-[ext_resource type="PackedScene" uid="uid://bynte1wkeuq6a" path="res://Scenes/Prefabs/Barrel.tscn" id="4_jsqog"]
+[ext_resource type="PackedScene" uid="uid://bynte1wkeuq6a" path="res://Scenes/Prefabs/Items/Barrel.tscn" id="4_jsqog"]
 
 [node name="Town" type="Node2D"]
 y_sort_enabled = true
