@@ -5,7 +5,7 @@ const WALK_SPEED = 80
 
 @onready var animated_sprite_2d = $AnimatedSprite2D
 
-func _physics_process(delta : float) -> void:
+func _physics_process(_delta : float) -> void:
 	var input_vector = Input.get_vector("left", "right", "up", "down")
 	velocity = input_vector * WALK_SPEED
 	move_and_slide()
@@ -17,7 +17,8 @@ func _physics_process(delta : float) -> void:
 
 func _unhandled_input(event : InputEvent) -> void:
 	if event.is_action_pressed("ui_accept"):
-		SceneStack.push("res://Scenes/Battle/battle.tscn")
+		Events.emit_signal("request_show_message", "You pressed accept!")
+		#SceneStack.push("res://Scenes/Battle/battle.tscn")
 
 func is_moving() -> bool:
 	return velocity != Vector2.ZERO

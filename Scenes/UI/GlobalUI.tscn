@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cjxfb1wjjrvge"]
+
+[ext_resource type="PackedScene" uid="uid://b4sdc0ggi7ysq" path="res://Scenes/UI/MessageDisplay.tscn" id="1_4wf3s"]
+
+[node name="GlobalUI" type="CanvasLayer"]
+layer = 128
+
+[node name="MessageDisplay" parent="." instance=ExtResource("1_4wf3s")]
+visible = false
