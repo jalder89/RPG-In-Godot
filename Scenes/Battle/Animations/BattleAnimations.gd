@@ -8,7 +8,7 @@ signal animation_finished
 
 func _ready() -> void:
 	animation_player.animation_finished.connect(
-		func (animation):
+		func ():
 			animation_finished.emit()
 	)
 
