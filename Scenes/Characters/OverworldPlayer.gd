@@ -18,7 +18,8 @@ func _physics_process(_delta : float) -> void:
 func _unhandled_input(event : InputEvent) -> void:
 	if event.is_action_pressed("ui_accept"):
 		Events.emit_signal("request_show_message", "You pressed accept!")
-		#SceneStack.push("res://Scenes/Battle/battle.tscn")
+	if event.is_action_pressed("battle"):
+		SceneStack.push("res://Scenes/Battle/battle.tscn")
 
 func is_moving() -> bool:
 	return velocity != Vector2.ZERO
