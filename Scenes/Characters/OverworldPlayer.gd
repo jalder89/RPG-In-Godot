@@ -3,7 +3,11 @@ extends CharacterBody2D
 
 const WALK_SPEED = 80
 
-@onready var animated_sprite_2d = $AnimatedSprite2D
+@onready var animated_sprite_2d := $AnimatedSprite2D
+@onready var interactable_detector := $InteractableDetector
+
+func _ready() -> void:
+	interactable_detector.rotation = Vector2.DOWN.angle()
 
 func _physics_process(_delta : float) -> void:
 	var input_vector = Input.get_vector("left", "right", "up", "down")
@@ -12,12 +16,17 @@ func _physics_process(_delta : float) -> void:
 	
 	if is_moving():
 		animate_walk()
+		interactable_detector.rotation = velocity.angle()
 	else:
 		animate_idle()
 
 func _unhandled_input(event : InputEvent) -> void:
 	if event.is_action_pressed("ui_accept"):
-		Events.emit_signal("request_show_message", "You pressed accept!")
+		var interactables : Array = interactable_detector.get_overlapping_bodies()
+		for interactable in interactables:
+			if not interactable is Interactable: continue
+			interactable._run_interaction()
+			get_tree().root.set_input_as_handled()
 	if event.is_action_pressed("battle"):
 		SceneStack.push("res://Scenes/Battle/battle.tscn")
 
