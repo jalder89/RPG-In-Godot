@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bynte1wkeuq6a"]
+
+[ext_resource type="Script" path="res://Scenes/Prefabs/Barrel.gd" id="1_5sopq"]
+[ext_resource type="Texture2D" uid="uid://cy7exi6u3mx6v" path="res://Assets/Sprites/Barrel.png" id="1_yw5w5"]
+
+[node name="Barrel" type="StaticBody2D"]
+collision_layer = 9
+collision_mask = 0
+script = ExtResource("1_5sopq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2.08165e-12, -4)
+texture = ExtResource("1_yw5w5")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-6, 4, -6, -4, -4, -6, 4, -6, 6, -4, 6, 4, 4, 6, -4, 6)
