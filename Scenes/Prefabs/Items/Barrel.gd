@@ -13,4 +13,4 @@ func _run_interaction() -> void:
 		Events.emit_signal("request_show_message", "You found " + article + " " + item.name + ".")
 		item = null
 	else:
-		Events.emit_signal("request_show_message", "It's just a barrel...")
+		Events.emit_signal("request_show_message", "It's just a barrel...", load("res://Scenes/Characters/ElizabethCharacter.tres"))

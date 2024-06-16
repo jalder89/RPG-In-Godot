@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cydftnle3q1nh"]
+
+[ext_resource type="PackedScene" uid="uid://k7jtw0xf5bwl" path="res://Scenes/UI/DialogBox.tscn" id="1_ja0th"]
+
+[node name="OverworldUI" type="CanvasLayer"]
+layer = 10
+
+[node name="DialogBox" parent="." instance=ExtResource("1_ja0th")]
+visible = false
