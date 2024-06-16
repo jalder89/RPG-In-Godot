@@ -8,14 +8,17 @@ var is_typing : bool = false
 
 @onready var text_box = %TextBox
 @onready var portrait = %Portrait
+@onready var name_box = %NameBox
 
 signal dialog_finished
 
 func _ready() -> void:
-	type_dialog("Hi, here is some test dialog.", Resource.new())
+	type_dialog("Hi, here is some test dialog.", load("res://Scenes/Characters/ElizabethCharacter.tres"))
 
-func type_dialog(bbcode : String, character : Resource) -> void:
+func type_dialog(bbcode : String, character : Character) -> void:
 	is_typing = true
+	portrait.texture = character.portrait
+	name_box.text = character.name
 	get_tree().paused = true
 	show()
 	text_box.text = bbcode
