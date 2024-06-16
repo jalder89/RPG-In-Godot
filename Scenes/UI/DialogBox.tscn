@@ -1,0 +1,77 @@
+[gd_scene load_steps=5 format=3 uid="uid://k7jtw0xf5bwl"]
+
+[ext_resource type="Texture2D" uid="uid://dkvwj8t3gwgg3" path="res://Assets/Sprites/DialogShadow.png" id="1_uxyqa"]
+[ext_resource type="Texture2D" uid="uid://nfqieebaa1g1" path="res://Assets/Sprites/PortraitEdge.png" id="2_gkgy1"]
+[ext_resource type="Theme" uid="uid://c5ws7dk51qn2g" path="res://Scenes/UI/DefaultTheme.tres" id="2_yuhrx"]
+[ext_resource type="Texture2D" uid="uid://clb2fqxx6v54y" path="res://Assets/Sprites/StumpyPortrait.png" id="4_3ddqd"]
+
+[node name="DialogBox" type="TextureRect"]
+self_modulate = Color(1, 1, 1, 0.435294)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_uxyqa")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -76.0
+offset_right = -3.0
+offset_bottom = -4.0
+grow_vertical = 0
+
+[node name="DialogContainer" type="HBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_override_constants/separation = 0
+
+[node name="LeftEdge" type="TextureRect" parent="HBoxContainer/DialogContainer"]
+layout_mode = 2
+texture = ExtResource("2_gkgy1")
+stretch_mode = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/DialogContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_yuhrx")
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/DialogContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="TextBox" type="RichTextLabel" parent="HBoxContainer/DialogContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+text = "Hello there, traveler! I hope you're doing well!"
+
+[node name="PortraitContainer" type="HBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/PortraitContainer"]
+layout_mode = 2
+theme = ExtResource("2_yuhrx")
+
+[node name="Portrait" type="TextureRect" parent="HBoxContainer/PortraitContainer/PanelContainer"]
+layout_mode = 2
+texture = ExtResource("4_3ddqd")
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/PortraitContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 2
+
+[node name="RightEdge" type="TextureRect" parent="HBoxContainer/PortraitContainer/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("2_gkgy1")
+stretch_mode = 2
+flip_h = true
