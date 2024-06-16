@@ -15,6 +15,19 @@ signal dialog_finished
 func _ready() -> void:
 	type_dialog("Hi, here is some test dialog.", load("res://Scenes/Characters/ElizabethCharacter.tres"))
 
+func _unhandled_input(event : InputEvent) -> void:
+	if not visible: return
+	if not event.is_action_pressed("ui_accept"): return
+	if is_typing:
+		is_typing = false
+		if typer is Tween: typer.kill()
+		text_box.visible_ratio = 1.0
+	else:
+		hide()
+		get_tree().root.set_input_as_handled()
+		get_tree().paused = false
+		emit_signal("dialog_finished")
+
 func type_dialog(bbcode : String, character : Character) -> void:
 	is_typing = true
 	portrait.texture = character.portrait
@@ -29,7 +42,6 @@ func type_dialog(bbcode : String, character : Character) -> void:
 	typer.tween_method(set_visible_characters, 0, total_characters, duration)
 	await typer.finished
 	is_typing = false
-	emit_signal("dialog_finished")
 	
 
 func set_visible_characters(index : int) -> void:
