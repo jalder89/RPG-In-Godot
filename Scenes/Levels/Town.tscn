@@ -20,6 +20,7 @@ layer_0/tile_data = PackedInt32Array(-2, 65536, 0, -1, 589824, 1, -65536, 65536,
 
 [node name="Barrel" parent="." instance=ExtResource("4_jsqog")]
 position = Vector2(208, 144)
+item = ExtResource("6_j1kr6")
 
 [node name="Barrel2" parent="." instance=ExtResource("4_jsqog")]
 position = Vector2(272, 112)
