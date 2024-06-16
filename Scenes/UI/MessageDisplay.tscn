@@ -26,4 +26,6 @@ theme_override_constants/margin_bottom = 2
 [node name="Label" type="Label" parent="PanelContainer/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "You did something!"
+text = "You found an Apple!
+A small fruit that heals 2 health."
+horizontal_alignment = 1

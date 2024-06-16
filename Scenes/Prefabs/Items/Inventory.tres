@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="Inventory" load_steps=2 format=3 uid="uid://dicrjqeqcgh21"]
+
+[ext_resource type="Script" path="res://Scenes/Prefabs/Items/Inventory.gd" id="1_iujep"]
+
+[resource]
+script = ExtResource("1_iujep")
+items = Array[Resource]([])

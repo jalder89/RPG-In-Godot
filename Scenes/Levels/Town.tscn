@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://c6t7hdyuq5jpa"]
+[gd_scene load_steps=7 format=3 uid="uid://c6t7hdyuq5jpa"]
 
 [ext_resource type="PackedScene" uid="uid://c5p0lh00avc8a" path="res://Scenes/Characters/OverworldPlayer.tscn" id="1_xdb7j"]
 [ext_resource type="PackedScene" uid="uid://b7wrdy0qlekss" path="res://Scenes/Prefabs/GrassBackground.tscn" id="2_yrxag"]
 [ext_resource type="PackedScene" uid="uid://byueh367xm80v" path="res://Scenes/Prefabs/DirtTiles.tscn" id="3_e38oi"]
-[ext_resource type="PackedScene" uid="uid://bynte1wkeuq6a" path="res://Scenes/Prefabs/Barrel.tscn" id="4_jsqog"]
+[ext_resource type="PackedScene" uid="uid://bynte1wkeuq6a" path="res://Scenes/Prefabs/Items/Barrel.tscn" id="4_jsqog"]
+[ext_resource type="PackedScene" uid="uid://ckhmh8l374xo6" path="res://Scenes/Prefabs/ItemPickup.tscn" id="5_phlre"]
+[ext_resource type="Resource" uid="uid://b36n3f2q8bvii" path="res://Scenes/Prefabs/Items/AppleItem.tres" id="6_j1kr6"]
 
 [node name="Town" type="Node2D"]
 y_sort_enabled = true
@@ -18,6 +20,7 @@ layer_0/tile_data = PackedInt32Array(-2, 65536, 0, -1, 589824, 1, -65536, 65536,
 
 [node name="Barrel" parent="." instance=ExtResource("4_jsqog")]
 position = Vector2(208, 144)
+item = ExtResource("6_j1kr6")
 
 [node name="Barrel2" parent="." instance=ExtResource("4_jsqog")]
 position = Vector2(272, 112)
@@ -33,3 +36,7 @@ position = Vector2(248, 104)
 
 [node name="Barrel6" parent="." instance=ExtResource("4_jsqog")]
 position = Vector2(264, 104)
+
+[node name="ItemPickup" parent="." instance=ExtResource("5_phlre")]
+position = Vector2(112, 136)
+item = ExtResource("6_j1kr6")
