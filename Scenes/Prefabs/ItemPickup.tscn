@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://ckhmh8l374xo6"]
+
+[ext_resource type="Script" path="res://Scenes/Prefabs/ItemPickup.gd" id="1_dvrss"]
+
+[node name="ItemPickup" type="StaticBody2D"]
+collision_layer = 9
+collision_mask = 0
+script = ExtResource("1_dvrss")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -2)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-6, 4, -6, -4, -4, -6, 4, -6, 6, -4, 6, 4, 4, 6, -4, 6)

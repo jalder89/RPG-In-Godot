@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://b36n3f2q8bvii"]
+
+[ext_resource type="Script" path="res://Scenes/Prefabs/Items/Item.gd" id="1_3kg7e"]
+[ext_resource type="Texture2D" uid="uid://drg8g878tk22l" path="res://Assets/Sprites/Apple.png" id="1_patbj"]
+
+[resource]
+script = ExtResource("1_3kg7e")
+name = "Apple"
+description = "A small fruit that heals 2 health."
+amount = 1
+overworld_sprite = ExtResource("1_patbj")
