@@ -1,0 +1,9 @@
+[gd_scene load_steps=4 format=3 uid="uid://cvmaydq2aoc73"]
+
+[ext_resource type="PackedScene" uid="uid://dmxqpry7dn232" path="res://Scenes/Characters/NPC.tscn" id="1_x0ev6"]
+[ext_resource type="Script" path="res://Scenes/Characters/StumpyNPC.gd" id="2_o56aw"]
+[ext_resource type="Resource" uid="uid://ba0diup4tf8p8" path="res://Scenes/Characters/StumpyCharacter.tres" id="3_xq8wa"]
+
+[node name="StumpyNPC" instance=ExtResource("1_x0ev6")]
+script = ExtResource("2_o56aw")
+character = ExtResource("3_xq8wa")

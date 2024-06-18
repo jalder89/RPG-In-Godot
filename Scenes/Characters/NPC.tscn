@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmxqpry7dn232"]
+
+[ext_resource type="Texture2D" uid="uid://3je074q4p2a4" path="res://Assets/Sprites/AxeStump.png" id="1_3dcwm"]
+[ext_resource type="Script" path="res://Scenes/Characters/NPC.gd" id="1_wka8s"]
+
+[node name="NPC" type="CharacterBody2D"]
+collision_layer = 11
+script = ExtResource("1_wka8s")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -4)
+texture = ExtResource("1_3dcwm")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-8, 4, -13, 4, -13, 1, -8, -4, -5, -7, 5, -7, 8, -4, 13, 1, 13, 4, 8, 4, 8, 8, 3, 8, -3, 8, -8, 8)
