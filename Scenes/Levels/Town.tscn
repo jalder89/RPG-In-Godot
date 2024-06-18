@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c6t7hdyuq5jpa"]
+[gd_scene load_steps=9 format=3 uid="uid://c6t7hdyuq5jpa"]
 
 [ext_resource type="PackedScene" uid="uid://c5p0lh00avc8a" path="res://Scenes/Characters/OverworldPlayer.tscn" id="1_xdb7j"]
 [ext_resource type="PackedScene" uid="uid://b7wrdy0qlekss" path="res://Scenes/Prefabs/GrassBackground.tscn" id="2_yrxag"]
@@ -7,8 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ckhmh8l374xo6" path="res://Scenes/Prefabs/ItemPickup.tscn" id="5_phlre"]
 [ext_resource type="Resource" uid="uid://b36n3f2q8bvii" path="res://Scenes/Prefabs/Items/AppleItem.tres" id="6_j1kr6"]
 [ext_resource type="PackedScene" uid="uid://cydftnle3q1nh" path="res://Scenes/UI/OverworldUI.tscn" id="7_6u7q0"]
-[ext_resource type="PackedScene" uid="uid://dmxqpry7dn232" path="res://Scenes/Characters/NPC.tscn" id="8_rr1ot"]
-[ext_resource type="Resource" uid="uid://ba0diup4tf8p8" path="res://Scenes/Characters/StumpyCharacter.tres" id="9_71q5x"]
+[ext_resource type="PackedScene" uid="uid://cvmaydq2aoc73" path="res://Scenes/Characters/StumpyNPC.tscn" id="8_o4n65"]
 
 [node name="Town" type="Node2D"]
 y_sort_enabled = true
@@ -46,6 +45,5 @@ item = ExtResource("6_j1kr6")
 
 [node name="OverworldUI" parent="." instance=ExtResource("7_6u7q0")]
 
-[node name="NPC" parent="." instance=ExtResource("8_rr1ot")]
+[node name="Stumpy" parent="." instance=ExtResource("8_o4n65")]
 position = Vector2(304, 120)
-character = ExtResource("9_71q5x")
